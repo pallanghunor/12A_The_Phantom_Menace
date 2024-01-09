@@ -1,0 +1,10 @@
+body, .navbar-brand, .nav-link, .container {
+    background-color: #14121c;
+    color: white;
+}
+
+.maintitle {
+    font-size: 70px;
+    margin-top: 40vh;
+    margin-bottom: 35vh;
+}
