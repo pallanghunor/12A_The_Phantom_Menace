@@ -1,4 +1,4 @@
-body, .navbar-brand, .nav-link, .container {
+body, .nav-link, .container {
     background-color: #14121c;
     color: white;
 }
@@ -7,4 +7,15 @@ body, .navbar-brand, .nav-link, .container {
     font-size: 70px;
     margin-top: 40vh;
     margin-bottom: 35vh;
+}
+
+.navbar {
+    font-size: 20px;
+    /* background-color: #302655; */
+}
+
+.nav-link:hover{
+    font-size: 21px ;
+    color: white;
+    text-shadow: 2px 2px 4px #ffffff;
 }
