@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'PPTelegraf-Regular';
+    src: url('/fonts/PPTelegraf-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PPTelegraf-UltraBold';
+    src: url('/fonts/PPTelegraf-UltraBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PPTelegraf-UltraLight';
+    src: url('/fonts/PPTelegraf-UltraLight.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'StarJedi-DGRW';
+    src: url('/fonts/StarJedi-DGRW.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, h1{
+    font-family: 'PPTelegraf-Regular', sans-serif;
+}
+
+body, .nav-link, .container {
+    background-color: #14121c;
+    color: white;
+}
+
+.navbar p{
+    font-size: 20px;
+}
+
+.navbar a{
+    font-size: 20px;
+    margin-right: 30px;
+    background-color: transparent;
+    /* background-color: #302655; */
+}
+
+.nav-link.active,
+.nav-link:hover{
+    color: #C669FF !important;
+}
+
+section{
+    min-height: 100vh;
+    display: flex;
+}
+
+.maintitle {
+    font-size: 70px;
+    margin-top: 20vh;
+}

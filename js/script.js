@@ -1,5 +1,5 @@
 // default url
-const BASE_URL = '/12a';
+const BASE_URL = '/12a/12A_The_Phantom_Menace';
 // oldalak helye:
 const rootDiv = document.querySelector('#root');
 // nav-ok:
