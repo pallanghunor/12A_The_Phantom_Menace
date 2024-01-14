@@ -41,6 +41,15 @@ body, .nav-link, .container {
     color: white;
 }
 
+::-webkit-scrollbar{
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(45deg, #C669FF, #6b15f5);
+    border-radius: 10px;
+}
+
 .navbar p{
     font-size: 20px;
 }
@@ -60,9 +69,15 @@ body, .nav-link, .container {
 section{
     min-height: 100vh;
     display: flex;
+    justify-content: center;
 }
 
 .maintitle {
     font-size: 70px;
     margin-top: 20vh;
+}
+
+section h2{
+    font-size: 50px;
+    margin-top: 10vh;
 }
