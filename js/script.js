@@ -1,3 +1,5 @@
+import Home from "./home.js";
+
 // default url
 const BASE_URL = '/12a/12A_The_Phantom_Menace';
 // oldalak helye:
@@ -8,7 +10,7 @@ const navs = document.querySelectorAll('a[data-href]');
 
 //route-ok
 const routes = {
-    '/'         : {html : './pages/home.html', code : null},
+    '/'         : {html : './pages/home.html', code : Home},
     '/404' : {html : './pages/404.html', code : null}
 }
 
