@@ -74,9 +74,14 @@ body,
 
 section {
     min-height: 100vh;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+}
+
+.carousel-inner{
+    margin: auto;
+    width: 78%;
 }
 
 .maintitle {
