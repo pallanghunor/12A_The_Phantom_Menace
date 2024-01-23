@@ -78,10 +78,11 @@ function cardsLoaded(selectionId) {
       for (let b = 0; b < 3; b++) {
         if (ids[currentIdIndex] != undefined) {
           Code += `
-                  <div class="col-12 col-md-4 box">
-                      <img src="${link}/${ids[currentIdIndex]}.jpg" alt="" class="kepek">
-                  </div>
-                  `;
+            <div class="col-12 col-md-4 box" id="${ids[currentIdIndex]}">
+              <img src="${link}/${ids[currentIdIndex]}.jpg" class="kepek">
+            </div>
+            `;
+
           currentIdIndex++;
         } else{
           break;
@@ -111,5 +112,38 @@ function cardsLoaded(selectionId) {
   cards.innerHTML = Code;
 }
 
+function cardAddEventListener(){
+  let cards = document.querySelectorAll(".box");
+  cards.forEach(card => {
+    card.addEventListener('click', createPopup(card.getAttribute('id')))//createPopup(card.getAttribute('id')))
+  });
+}
+
+const popupNode = document.querySelector('.popup');
+const popupContent = document.querySelector(".popup-content")
+const overlay = document.querySelector(".overlay");
+
+function createPopup(id){
+  console.log(id);
+  // let closeBtn = document.querySelector(".close-btn");
+  popupContent.innerHTML = "";
+  let content = document.createElement('h1');
+  content.innerText = id;
+  content.style.color = "red";
+  popupContent.append(content);
+  overlay.addEventListener("click", closePopup);
+  // closeBtn.addEventListener("click", closePopup);
+  return openPopup;
+}
+
+function openPopup(){
+  popupNode.classList.add("active");
+}
+function closePopup(){
+  popupNode.classList.remove("active");
+}
+
+
 cardsLoaded("starships-cards");
 cardsLoaded("vehicles-cards");
+cardAddEventListener();
