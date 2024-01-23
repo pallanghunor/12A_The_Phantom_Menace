@@ -115,33 +115,29 @@ function cardsLoaded(selectionId) {
 function cardAddEventListener(){
   let cards = document.querySelectorAll(".box");
   cards.forEach(card => {
-    card.addEventListener('click', createPopup(card.getAttribute('id')))//createPopup(card.getAttribute('id')))
+    card.addEventListener('click', () => createPopup(card.getAttribute('id')))//createPopup(card.getAttribute('id')))
   });
 }
 
 const popupNode = document.querySelector('.popup');
-const popupContent = document.querySelector(".popup-content")
+const popupContent = document.querySelector(".popup-content-stat")
 const overlay = document.querySelector(".overlay");
+const closeBtn = document.querySelector(".close-btn");
 
 function createPopup(id){
-  console.log(id);
-  // let closeBtn = document.querySelector(".close-btn");
+  function closePopup(){
+    popupNode.classList.remove("active");
+  }
   popupContent.innerHTML = "";
+  popupNode.classList.add("active");
   let content = document.createElement('h1');
   content.innerText = id;
   content.style.color = "red";
   popupContent.append(content);
   overlay.addEventListener("click", closePopup);
-  // closeBtn.addEventListener("click", closePopup);
-  return openPopup;
+  closeBtn.addEventListener("click", closePopup);
 }
 
-function openPopup(){
-  popupNode.classList.add("active");
-}
-function closePopup(){
-  popupNode.classList.remove("active");
-}
 
 
 cardsLoaded("starships-cards");
