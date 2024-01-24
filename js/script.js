@@ -32,16 +32,19 @@ function cardsLoaded(selectionId) {
   let carouselId;
   let cards;
   let ids;
+  let name;
   let link;
   if (selectionId == "starships-cards") {
     cards = starhipsCards;
     carouselId = "#starships-cards";
     ids = allStarships.map((x) => x.id);
+    name = allStarships.map((x) => x.name);
     link = "https://bgs.jedlik.eu/swimages/starships";
   }
   if (selectionId == "vehicles-cards") {
     cards = vehiclesCards;
     ids = allVehicles.map((x) => x.id);
+    name = allVehicles.map((x) => x.name);
     carouselId = "#vehicles-cards";
     link = "https://bgs.jedlik.eu/swimages/vehicles";
   }
@@ -80,6 +83,11 @@ function cardsLoaded(selectionId) {
           Code += `
             <div class="col-12 col-md-4 box" id="${ids[currentIdIndex]}">
               <img src="${link}/${ids[currentIdIndex]}.jpg" class="kepek">
+              <div class="overlay">
+                <div class="content">
+                  ${name[currentIdIndex]}
+                </div>
+              </div>
             </div>
             `;
 

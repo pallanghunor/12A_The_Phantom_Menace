@@ -79,14 +79,33 @@ section {
     flex-wrap: wrap; */
 }
 
-.carousel-inner{
+.carousel-inner {
     margin: auto;
     width: 79%;
 }
 
-.kepek{
+.kepek {
+    opacity: 1;
+    display: block;
+    transform: 0.5s ease;
+    max-width: 100%;
+    transition: all 0.3s;
     width: 100%;
     height: 100%;
+    transform: scale(1);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 25px;
+    color: white;
+    overflow: hidden;
+    text-align: center;
+    white-space: normal;
 }
 
 .maintitle {
@@ -169,7 +188,7 @@ section h2 {
 
 /* Custom box */
 
-.box{
+.box {
     width: 42vh;
     height: 25vh;
     /* background-color: #6b15f5; */
@@ -177,6 +196,28 @@ section h2 {
     border-radius: 5%;
     margin: 5vh 5vh;
     padding: 0;
+    position: relative;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+.overlay {
+    opacity: 0;
+
+}
+
+.box:hover .kepek {
+    opacity: 0.5;
+    transform: scale(1.1);
+         
+}
+
+.box:hover .overlay {
+    opacity: 1;
 }
 
 /* Popop ablak*/
@@ -185,7 +226,7 @@ section h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .popup {
@@ -194,7 +235,7 @@ section h2 {
     left: 0px;
     width: 100%;
     height: 100%;
-    transition:top 0ms ease-in-out 300ms;
+    transition: top 0ms ease-in-out 300ms;
 }
 
 .popup .overlay {
@@ -203,23 +244,23 @@ section h2 {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition:opacity 100ms ease-in-out 200ms;
+    transition: opacity 100ms ease-in-out 200ms;
 }
 
 .popup .popup-content {
     position: absolute;
-    background-color:#14121c;
+    background-color: #14121c;
     top: 50%;
     left: 50%;
-    transform:translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) scale(1.15);
     width: 95%;
     max-width: 350px;
     padding: 25px;
     border-radius: 20px;
     opacity: 0;
-    box-shadow: 0px 2px 2px 5px rgba(0,0,0, 0,0.05);
+    box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0, 0.05);
     transition: all 300ms ease-in-out;
     padding-top: 0px;
 }
@@ -233,7 +274,7 @@ section h2 {
 
 .popup .popup-content p {
     margin: 15px 0px;
-    color:  #222;
+    color: #222;
     font-size: 16px;
     text-align: center;
 }
@@ -262,23 +303,23 @@ section h2 {
 }
 
 
-.popup .popup-content .controls .close-btn{
+.popup .popup-content .controls .close-btn {
     background: #3284ed;
     color: white;
 }
 
 
-.popup.active{
+.popup.active {
     top: 0px;
     transition: top 0ms ease-in-out 0ms;
 }
 
-.popup.active .overlay{
+.popup.active .overlay {
     opacity: 1;
     transition: all 300ms ease-in-out;
 }
 
-.popup.active .popup-content{
-    transform:translate(-50%, -50%) scale(1);
+.popup.active .popup-content {
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
