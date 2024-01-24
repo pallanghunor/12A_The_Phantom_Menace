@@ -4,11 +4,11 @@ let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
 let starhipsCards = document.querySelector("#starships-cards");
 let vehiclesCards = document.querySelector("#vehicles-cards");
+let crawl = document.querySelector("#crawl");
 
 let allStarships = await Data.getStarShipsData();
-console.log(allStarships);
 let allVehicles = await Data.getVehiclesData();
-console.log(allVehicles);
+let crawlData = await Data.getFilmData();
 
 window.onscroll = () => {
   sections.forEach((sec) => {
@@ -27,6 +27,23 @@ window.onscroll = () => {
     }
   });
 };
+
+
+function openingCrawlLoaded(){
+  crawl.innerHTML = "";
+  let text = "";
+  text = `
+    <div class="title">
+      <p>Episode ${crawlData.episode_id}</p>
+      <h1>${crawlData.title}</h1>
+    </div>
+    <p>${crawlData.opening_crawl}</p>
+  `;
+  crawl.innerHTML = text;
+}
+
+openingCrawlLoaded();
+
 
 function cardsLoaded(selectionId) {
   let carouselId;
@@ -145,8 +162,6 @@ function createPopup(id){
   overlay.addEventListener("click", closePopup);
   closeBtn.addEventListener("click", closePopup);
 }
-
-
 
 cardsLoaded("starships-cards");
 cardsLoaded("vehicles-cards");

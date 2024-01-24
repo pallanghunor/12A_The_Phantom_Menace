@@ -1,5 +1,15 @@
 export class Data{
 
+    static async getFilmData(){
+        const fetchedFilmData = await fetch('https://bgs.jedlik.eu/swapi/api/films/4')
+        .then(resp => {
+            return resp.json();
+        })
+        const data = fetchedFilmData;
+
+        return data[0];
+    }
+
     static async getStarShipsData() {
         const fetchedStarShipsData = await fetch('https://bgs.jedlik.eu/swapi/api/starships')
         .then(resp => {
@@ -7,7 +17,7 @@ export class Data{
         })
         const data = fetchedStarShipsData;
 
-        return data
+        return data;
     }
     static async getVehiclesData() {
         const fetchedVehiclesData = await fetch('https://bgs.jedlik.eu/swapi/api/vehicles')
@@ -16,6 +26,6 @@ export class Data{
         })
         const data = fetchedVehiclesData;
 
-        return data
+        return data;
     }
 }
