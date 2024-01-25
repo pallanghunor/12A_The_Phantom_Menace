@@ -36,6 +36,7 @@
 body,
 h1 {
     font-family: 'PPTelegraf-Regular', sans-serif;
+    color: white;
 }
 
 body,
@@ -152,6 +153,15 @@ section {
     transform: scale(1);
 }
 
+.filmkepek {
+    opacity: 1;
+    display: block;
+    transform: 0.5s ease;
+    width: 35vh;
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
 .content {
     position: absolute;
     top: 50%;
@@ -262,6 +272,23 @@ section h2 {
     overflow: hidden;
 }
 
+.filmbox {
+    width: 42vh;
+    height: 50vh;
+    /* background-color: #6b15f5; */
+    border: 10px solid #6b15f5;
+    border-radius: 5%;
+    margin: 5vh 5vh;
+    padding: 0;
+    position: relative;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
 .overlay {
     opacity: 0;
 
@@ -312,7 +339,7 @@ section h2 {
     left: 50%;
     transform: translate(-50%, -50%) scale(1.15);
     width: 95%;
-    max-width: 350px;
+    max-width: 1000px;
     padding: 25px;
     border-radius: 20px;
     opacity: 0;
@@ -324,7 +351,7 @@ section h2 {
 .popup .popup-content h2 {
     margin: 10px 0px;
     font-size: 25px;
-    color: #111;
+    color: #fff;
     text-align: center;
 }
 

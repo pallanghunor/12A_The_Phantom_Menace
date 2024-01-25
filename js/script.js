@@ -8,7 +8,8 @@ let crawl = document.querySelector("#crawl");
 
 let allStarships = await Data.getStarShipsData();
 let allVehicles = await Data.getVehiclesData();
-let crawlData = await Data.getFilmData();
+let crawlData = await Data.getSpecificFilmData();
+let filmDatas = await Data.getAllFilmsData();
 
 window.onscroll = () => {
   sections.forEach((sec) => {
@@ -34,10 +35,10 @@ function openingCrawlLoaded(){
   let text = "";
   text = `
     <div class="title">
-      <p>Episode ${crawlData.episode_id}</p>
-      <h1>${crawlData.title}</h1>
+      <p>Episode ${crawlData[0].episode_id}</p>
+      <h1>${crawlData[0].title}</h1>
     </div>
-    <p>${crawlData.opening_crawl}</p>
+    <p>${crawlData[0].opening_crawl}</p>
   `;
   crawl.innerHTML = text;
 }
@@ -98,7 +99,7 @@ function cardsLoaded(selectionId) {
       for (let b = 0; b < 3; b++) {
         if (ids[currentIdIndex] != undefined) {
           Code += `
-            <div class="col-12 col-md-4 box" id="${ids[currentIdIndex]}">
+            <div class="col-12 col-md-4 box ${carouselId}" id="${ids[currentIdIndex]}">
               <img src="${link}/${ids[currentIdIndex]}.jpg" class="kepek">
               <div class="overlay">
                 <div class="content">
@@ -107,7 +108,6 @@ function cardsLoaded(selectionId) {
               </div>
             </div>
             `;
-
           currentIdIndex++;
         } else{
           break;
@@ -140,7 +140,7 @@ function cardsLoaded(selectionId) {
 function cardAddEventListener(){
   let cards = document.querySelectorAll(".box");
   cards.forEach(card => {
-    card.addEventListener('click', () => createPopup(card.getAttribute('id')))//createPopup(card.getAttribute('id')))
+    card.addEventListener('click', () => createPopup(card.getAttribute('id'),card.getAttribute('class')))//createPopup(card.getAttribute('id')))
   });
 }
 
@@ -149,18 +149,79 @@ const popupContent = document.querySelector(".popup-content-stat")
 const overlay = document.querySelector(".overlay");
 const closeBtn = document.querySelector(".close-btn");
 
-function createPopup(id){
+function createPopup(id, carousel){
   function closePopup(){
     popupNode.classList.remove("active");
   }
-  popupContent.innerHTML = "";
   popupNode.classList.add("active");
-  let content = document.createElement('h1');
-  content.innerText = id;
-  content.style.color = "red";
-  popupContent.append(content);
+  FillPopupWindow(id, carousel);
   overlay.addEventListener("click", closePopup);
   closeBtn.addEventListener("click", closePopup);
+}
+
+function FillPopupWindow(id, carousel){
+  popupContent.innerHTML = "";
+  let content = document.createElement('h1');
+  let name;
+  let ids;
+  let movies;
+  let filmlink;
+  filmlink = "https://bgs.jedlik.eu/swimages/films/";
+  let code = "";
+  const filmek = [];
+
+  for (let i = 0; i < 6; i++) {
+    filmek.push(filmDatas[i].episode_id);
+  }
+
+  name = allStarships.map((x) => x.name);
+  ids = allStarships.map((x) => x.id);
+  movies = allStarships.map((x) => x.films);
+  let ugrasok = 0;
+  let final = 0;
+  ids.forEach(i => {
+    if (i == id) {
+      final = ugrasok;
+    }
+    ugrasok++;
+  });
+  code += `<div>
+  <h1>${name[final]}</h1>
+  </div>`;
+  
+  code += `<div class="container">
+  <div class="row">
+  `
+  let attend = [];
+  attend.push(movies[final]);
+  console.log(attend[0].length);
+  for (let e = 0; e < attend[0].length; e++) {
+    console.log(attend[0][e]);
+    console.log(filmDatas[attend[0][e]-1].title);
+    // code += `<h2>${filmDatas[attend[0][e]-1].title}</h2>`
+
+    code += `
+    <div class="col-12 col-md-12 filmbox">
+      <div class="overlay">
+        <div class="content">
+        <img src="${filmlink}/${attend[0][e]}.jpg" class="filmkepek">
+        <div class="overlay">
+                <div class="content">
+                ${filmDatas[attend[0][e]-1].title}
+                </div>
+              </div>
+        </div>
+        </div>
+        </div>`
+}
+code += `
+  
+</div>
+</div>`
+
+
+  popupContent.append(content);
+  popupContent.innerHTML = code;
 }
 
 cardsLoaded("starships-cards");

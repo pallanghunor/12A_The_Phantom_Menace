@@ -1,13 +1,23 @@
 export class Data{
 
-    static async getFilmData(){
+    static async getSpecificFilmData(){
         const fetchedFilmData = await fetch('https://bgs.jedlik.eu/swapi/api/films/4')
         .then(resp => {
             return resp.json();
         })
         const data = fetchedFilmData;
 
-        return data[0];
+        return data;
+    }
+
+    static async getAllFilmsData(){
+        const fetchedAllFilmDatas = await fetch('https://bgs.jedlik.eu/swapi/api/films')
+        .then(resp => {
+            return resp.json();
+        })
+        const data = fetchedAllFilmDatas;
+
+        return data;
     }
 
     static async getStarShipsData() {
