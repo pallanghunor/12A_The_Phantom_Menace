@@ -92,14 +92,14 @@ function cardsLoaded(selectionId) {
                 <div class="carousel-item">
             `;
     }
-    for (let r = 0; r < 2; r++) {
+    for (let r = 0; r < 1; r++) {
       Code += `
-                <div class="row">
+                <div class="row d-flex justify-content-evenly">
             `;
-      for (let b = 0; b < 3; b++) {
+      for (let b = 0; b < 6; b++) {
         if (ids[currentIdIndex] != undefined) {
           Code += `
-            <div class="col-12 col-md-4 box ${carouselId}" id="${ids[currentIdIndex]}">
+            <div class=" box ${carouselId}" id="${ids[currentIdIndex]}">
               <img src="${link}/${ids[currentIdIndex]}.jpg" class="kepek">
               <div class="overlay">
                 <div class="content">
@@ -152,11 +152,32 @@ const closeBtn = document.querySelector(".close-btn");
 function createPopup(id, carousel){
   function closePopup(){
     popupNode.classList.remove("active");
+    enableScroll();
   }
   popupNode.classList.add("active");
+  disableScroll();
   FillPopupWindow(id, carousel);
   overlay.addEventListener("click", closePopup);
   closeBtn.addEventListener("click", closePopup);
+}
+
+function disableScroll() {
+  // Save the current scroll position
+  var scrollPosition = window.scrollY;
+
+  // Add a class to the body to disable scrolling
+  document.body.classList.add('no-scroll');
+
+  // Set the body's top position to the negative of the scroll position
+  document.body.style.top = `-${scrollPosition}px`;
+}
+
+function enableScroll() {
+  // Remove the class that disables scrolling
+  document.body.classList.remove('no-scroll');
+
+  // Reset the body's top position
+  document.body.style.top = '';
 }
 
 function FillPopupWindow(id, carousel){
@@ -201,7 +222,7 @@ function FillPopupWindow(id, carousel){
     // code += `<h2>${filmDatas[attend[0][e]-1].title}</h2>`
 
     code += `
-    <div class="col-12 col-md-12 filmbox">
+    <div class="col-12 col-md-4 filmbox">
       <div class="overlay">
         <div class="content">
         <img src="${filmlink}/${attend[0][e]}.jpg" class="filmkepek">
